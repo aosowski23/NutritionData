@@ -22,7 +22,7 @@ $('.dropdown-button').dropdown({
 $( document ).ready(function() {
     console.log( "ready!" );
     $.ajax({
-        url: "https://api.mongolab.com/api/1/databases/cs590v/collections/nutrition2?l=10000&apiKey=cabg87YgyofisIfvY2Tz2vkRIXtghkOb",
+        url: "https://api.mongolab.com/api/1/databases/cs590v/collections/nutrition2?l=10000&apiKey=####",
         type: "GET",
         contentType: "application/json",
         success: function(data,i) {
