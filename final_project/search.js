@@ -83,7 +83,7 @@ pc0 = d3.parcoords()("#parallel")
          var val = $("#searchInput").val();
          console.log(val);
           $.ajax({
-            url:"https://api.mongolab.com/api/1/databases/cs590v/collections/nutrition2?q={\"NDB No\":" + val +"}&l=10&apiKey=cabg87YgyofisIfvY2Tz2vkRIXtghkOb",
+            url:"https://api.mongolab.com/api/1/databases/cs590v/collections/nutrition2?q={\"NDB No\":" + val +"}&l=10&apiKey=####",
             type: "GET",
             contentType: "application/json",
 
