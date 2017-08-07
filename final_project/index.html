@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>590V Final Project</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/parcoords/0.7.0/d3.parcoords.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <div id="home" class="block white">
+        <nav class="pushpin-demo-nav pin-top" data-target="home" style="top: 612px;">
+            <div class="nav-wrapper deep-orange lighten-3">
+                <div class="container">
+                    <a class="brand-logo" href="#home"> NutritionData </a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+                        <li>
+                             <a id ="searchHome" href="#search"> Search </a>
+                        </li>
+                        <li>
+                             <a id="exploreHome" href="#explore"> Explore </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="row intro">
+            <div class="row message">
+                <div class="col s3">
+                </div>
+                <div class="col s6">
+                    <h2>Welcome to NutritionData. <br>Here you will be able to find nutrition data on over 8000 foods.
+                    <br> The USDA's sr28 dataset is being visualized.
+                    <br> All data was taken from 100g samples.</h2>
+
+                </div>
+                 <div class="col s3">
+                 </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div id="search" class="block white">
+        <nav class="pushpin-demo-nav pin-bottom" data-target="search" style="top: 612px;">
+            <div class="nav-wrapper deep-orange lighten-3">
+                <div class="container">
+                    <a href="#search" class="brand-logo"> Search </a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+                        <li>
+                             <a id="homeSearch" href="#home"> Home </a>
+                        </li>
+                        <li>
+                             <a id="exploreSearch" href="#explore"> Explore </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+        <div class="row search">
+            <div class="col s6 offset-s3 searchBar">
+                <div class="input-field" id="searchInput" value="CHEESE,BLUE">
+                  <i class="material-icons prefix">search</i>
+                  <input type="text" id="autocomplete-input" class="autocomplete">
+                  <label for="autocomplete-input">Search For a Food</label>
+                </div>
+            </div>
+        </div>
+        <div class="row three">
+                <div class="parcoords" id="parallel"> </div>
+        </div>
+        <div class="row first" id="grid">
+
+        </div>
+
+
+    </div>
+    <div id="explore" class="block white">
+        <nav class="pushpin-demo-nav pin-bottom" data-target="explore" style="top: 612px;">
+            <div class="nav-wrapper deep-orange lighten-3">
+                <div class="container">
+                    <a href="#explore" class="brand-logo"> Explore </a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+                        <li>
+                             <a id="homeExplore" href="#home"> Home </a>
+                        </li>
+                        <li>
+                             <a id="searchExplore" href="#search"> Search </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+        <div class="row top">
+
+            <div class="col s6 offset-s1 middle">
+                <div class="legend">
+                    <h1>Below is a visualization of K-Means clustering.
+                    <br>The X-Axis, Y-Axis, and Number of Clusters can be adjusted.
+                    <br> Select A row in the row chart to view a particular group.</h1>
+                </div>
+                <h1>K-Means Clustering</h1>
+                <div id="scatter"></div>
+
+                <div class="select">
+
+                        <span><a class='dropdown-button btn'  data-activates='dropdown1'>X-Axis</a>
+                            <ul id='dropdown1' value = "Protein (g)" class='dropdown-content'>
+
+                            </ul>
+                        </span>
+
+                        <span><a class='dropdown-button btn' data-activates='dropdown2'>Y-Axis</a>
+                            <ul id='dropdown2' value="Protein (g)" class='dropdown-content'>
+
+                            </ul>
+                        </span>
+                        <span><a class='dropdown-button btn' data-activates='dropdown3'>Clusters </a>
+                             <ul id='dropdown3' value=1 class='dropdown-content'>
+
+                            </ul>
+                        </span>
+                </div>
+            </div>
+            <div class="col s3 r">
+                <h1>Avg. Protein (g) Per Group</h1>
+                <div id="bar1"class="right-col">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+    <script src ="https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.12/crossfilter.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dc/2.1.4/dc.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parcoords/0.7.0/d3.parcoords.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sylvester/0.1.3/sylvester.min.js"></script>
+    <script src="https://www.lactame.com/lib/ml/2.0.0/ml.min.js"></script>
+    <script src="divGrid.js"></script>
+    <script type="text/javascript" src="exploreCharts.js"></script>
+    <script type="text/javascript" src="search.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
